@@ -15,7 +15,7 @@ docs_extras = [
 
 setuptools.setup(
     name="nettoolkit_common",
-    version="0.0.1",
+    version="0.0.2",
     author="ALIASGAR - ALI",
     author_email="aholo2000@gmail.com",
     description="Networking Toolkit common Functions",
@@ -29,7 +29,7 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.8',
-    install_requires= [],
+    install_requires= ['pandas', ],
     # extras_require={'docs': docs_extras},
 )
 
