@@ -7,7 +7,7 @@ __all__ = [
 	'Default', 'Container', 'Numeric', 'DifferenceDict', 
 	'STR', 'IO', 'LST', 'DIC', 'LOG', 'DB', 'IP', 'XL_READ', 'XL_WRITE', 
 	'DictMethods', 'Multi_Execution', 'nslookup', 'standardize_if', 'get_username', 'get_password', 
-	'get_juniper_int_type', 'get_cisco_int_type',
+	'get_juniper_int_type', 'get_cisco_int_type', 'get_device_manu',
 
 	# common
 	"remove_domain", "read_file", "get_op", "blank_line", "get_device_manufacturar", "verifid_output", 
@@ -25,7 +25,7 @@ from .gpl import (Default, Container, Numeric,
 	STR, IO, LST, LOG, DB, IP, XL_READ, XL_WRITE, 
 	Multi_Execution, nslookup, standardize_if,
 	get_username, get_password, 
-	get_juniper_int_type, get_cisco_int_type
+	get_juniper_int_type, get_cisco_int_type, get_device_manu
 	)
 from .common import (
 	remove_domain, read_file, get_op, blank_line, get_device_manufacturar, verifid_output, 

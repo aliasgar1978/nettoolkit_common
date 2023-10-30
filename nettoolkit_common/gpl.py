@@ -721,6 +721,7 @@ def interface_type(ifname):
 		for sub_int_type in int_types:
 			if sub_int_type.startswith(ifname):
 				return (int_type, sub_int_type)
+	return ("", "")
 
 def standardize_if(ifname, expand=False):
 	"""standardized interface naming
@@ -1563,3 +1564,10 @@ def get_juniper_int_type(intf):
 
 def get_cisco_int_type(intf):
 	return interface_type(intf)[0].lower()
+
+
+def get_device_manu(intf):
+	jit = get_juniper_int_type(intf)
+	cit = get_cisco_int_type(intf)
+	if jit.lower() == 'physical': return "juniper"
+	if cit.lower() == 'physical': return "cisco"
