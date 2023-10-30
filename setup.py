@@ -15,7 +15,7 @@ docs_extras = [
 
 setuptools.setup(
     name="nettoolkit_common",
-    version="0.0.2",
+    version="0.0.3",
     author="ALIASGAR - ALI",
     author_email="aholo2000@gmail.com",
     description="Networking Toolkit common Functions",
