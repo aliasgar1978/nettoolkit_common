@@ -511,7 +511,6 @@ class STR(Container):
 		expand will give fulllength, otherwise it will shrink it to its standard size given
 		-->str (standardized interface)
 		'''
-		# print(intName)
 		if not intName: return intName
 		pfx = STR.if_prefix(standardize_if(intName))
 		sfx = STR.if_suffix(intName)
@@ -715,12 +714,11 @@ def interface_type(ifname):
 		if not i.isdigit(): iname += i
 		else: break
 	ifname = iname
-	if not ifname: 
-		raise ValueError(f"Missing mandatory input ifname")
-	for int_type, int_types in  CISCO_IFSH_IDENTIFIERS.items():
-		for sub_int_type in int_types:
-			if sub_int_type.startswith(ifname):
-				return (int_type, sub_int_type)
+	if ifname: 
+		for int_type, int_types in  CISCO_IFSH_IDENTIFIERS.items():
+			for sub_int_type in int_types:
+				if sub_int_type.startswith(ifname):
+					return (int_type, sub_int_type)
 	return ("", "")
 
 def standardize_if(ifname, expand=False):
@@ -762,6 +760,7 @@ def standardize_if(ifname, expand=False):
 	try:
 		shorthand_len = CISCO_IFSH_IDENTIFIERS[int_type][int_pfx]
 	except:
+		if get_juniper_int_type(ifname): return ifname
 		raise KeyError(f"Invalid shorthand Key detected {int_type}, {int_pfx}")
 	if expand:  return int_pfx+ifname[len(srcifname):]
 	return int_pfx[:shorthand_len]+ifname[len(srcifname):]
@@ -1571,3 +1570,4 @@ def get_device_manu(intf):
 	cit = get_cisco_int_type(intf)
 	if jit.lower() == 'physical': return "juniper"
 	if cit.lower() == 'physical': return "cisco"
+	return ""
