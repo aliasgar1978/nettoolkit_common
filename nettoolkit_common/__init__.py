@@ -10,7 +10,7 @@ __all__ = [
 	'get_juniper_int_type', 'get_cisco_int_type', 'get_device_manu',
 
 	# common
-	"remove_domain", "read_file", "get_op", "blank_line", "get_device_manufacturar", "verifid_output", 
+	"remove_domain", "read_file", "get_op", "get_ops", "blank_line", "get_device_manufacturar", "verifid_output", 
 	"get_string_part", "get_string_trailing", "standardize_mac", "mac_2digit_separated", "mac_4digit_separated", 
 	"flatten", "dataframe_generate",
 
@@ -28,7 +28,7 @@ from .gpl import (Default, Container, Numeric,
 	get_juniper_int_type, get_cisco_int_type, get_device_manu
 	)
 from .common import (
-	remove_domain, read_file, get_op, blank_line, get_device_manufacturar, verifid_output, 
+	remove_domain, read_file, get_op, get_ops, blank_line, get_device_manufacturar, verifid_output, 
 	get_string_part, get_string_trailing, standardize_mac, mac_2digit_separated, mac_4digit_separated,
 	flatten, dataframe_generate
 	)

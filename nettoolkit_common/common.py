@@ -55,6 +55,33 @@ def get_op(file, cmd):
 		if toggle:
 			op_lst.append(l.strip())
 	return op_lst
+
+def get_ops(file, cmd_startswith):
+	"""filter the command outputs from given captured file.  
+	Note: output should be taken from capture_it utility or it should be in the format
+	derived by it.
+
+	Args:
+		file (str): capture file
+		cmd_startswith (str): show command start string
+
+	Returns:
+		dict: filtered command output in dict format
+	"""    	
+	file_lines = read_file(file)
+	toggle, op_lst, op_dict = False, [], {}
+	for l in file_lines:
+		if toggle and l.find(CMD_LINE_START_WITH)>0:
+			op_dict[cmd] = op_lst
+			op_lst = []
+			toggle=False
+		if l.find(CMD_LINE_START_WITH)>0:
+			toggle = l.find(cmd_startswith)>0
+			cmd = l[l.find(cmd_startswith):].strip()
+			continue
+		if toggle:
+			op_lst.append(l.rstrip())
+	return op_dict
 # ------------------------------------------------------------------------------
 
 def blank_line(line): 
